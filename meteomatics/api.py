@@ -321,11 +321,11 @@ def query_grid(startdate, parameter_grid, lat_N, lon_W, lat_S, lon_E, res_lat, r
         res_lon=res_lon,
         urlParams="&".join(["{}={}".format(k, v) for k, v in url_params.items()])
     )
-
-    print("URL:",url)
+    
+    print("url",url)
 
     response = query_api(url, username, password, request_type=request_type)
-    return convert_grid_binary_response_to_df(response.content, parameter_grid, na_values=na_values)
+    return convert_grid_binary_response_to_df(response.content, parameter_grid, na_values=na_values), url
 
 
 def query_grid_unpivoted(valid_dates, parameters, lat_N, lon_W, lat_S, lon_E, res_lat, res_lon, username, password,
